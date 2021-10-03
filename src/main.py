@@ -4,7 +4,7 @@ import glob
 import face_recognation as recognation
 import utility
 
-projectPath = os.getcwd()
+projectPath = os.getcwd().replace("src","").replace("\\","/")
 imagePath = projectPath + "/images/"
 imageName = "1.jpg"
 filePath = projectPath + "/files/"
