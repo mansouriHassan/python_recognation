@@ -4,16 +4,21 @@ from PIL import Image
 import os
 
 # Path for face image database
-path = os.getcwd().replace("src","").replace("\\","/") + '/dataset'
-
+projectPath = os.getcwd().replace("src","").replace("\\","/")
+datasetPath = projectPath + '/dataset'
+trainerPath = projectPath + "/trainer"
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 cascPath=os.path.dirname(cv2.__file__)+"/data/haarcascade_frontalface_default.xml"
 detector = cv2.CascadeClassifier(cascPath)
 
-# function to get the images and label data
-def getImagesAndLabels(path):
+# creating dataset dir if is not exists
+if (not os.path.exists(trainerPath)):
+    os.mkdir(trainerPath)
 
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
+# function to get the images and label data
+def getImagesAndLabels(datasetPath):
+
+    imagePaths = [os.path.join(datasetPath,f) for f in os.listdir(datasetPath)]     
     faceSamples=[]
     ids = []
 
@@ -32,7 +37,7 @@ def getImagesAndLabels(path):
     return faceSamples,ids
 
 print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
-faces,ids = getImagesAndLabels(path)
+faces,ids = getImagesAndLabels(datasetPath)
 recognizer.train(faces, np.array(ids))
 
 # Save the model into trainer/trainer.yml

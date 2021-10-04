@@ -2,6 +2,7 @@ import cv2
 import os
 
 projectPath = os.getcwd().replace("src","").replace("\\","/")
+datasetPath = projectPath + "/dataset"
 imagePath = projectPath + "/images/"
 imageName = "10.jpg"
 
@@ -12,7 +13,12 @@ face_detector = cv2.CascadeClassifier(cascPath)
 face_id = 10
 #input('\n enter user id end press <return> ==>  ')
 
-print("\n [INFO] Initializing face capture. Look the camera and wait ...")
+print("\n [INFO] Initializing face capture. wait ...")
+
+# creating dataset dir if is not exists
+if (not os.path.exists(datasetPath)):
+    os.mkdir(datasetPath)
+
 # Initialize individual sampling face count
 count = 0
 while(True):
