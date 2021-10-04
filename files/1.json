@@ -11,7 +11,22 @@
     },
     "phoneNumbers": [
         { 
-			"type": "home", "number": "7383627627"
+			"type": "home",
+			"number": "7383627627"
+		}
+    ],
+	"father": [
+        {
+			"firstName": "Rack",
+			"lastName": "Jackon",
+			"number": "7383627627"
+		}
+    ],
+	"mother": [
+        {
+			"firstName": "Rack",
+			"lastName": "Jackon",
+			"number": "7383627627"
 		}
     ]
 }
